@@ -7,11 +7,12 @@ const observer = new IntersectionObserver((entries)=>{
       observer.unobserve(entry.target);
     }
   });
-},{threshold:0.1});
+},{ threshold: 0.1 });
 
-// Ensure DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => fadeIns.forEach(el=>observer.observe(el)) );
+  document.addEventListener('DOMContentLoaded', () => {
+    fadeIns.forEach(el => observer.observe(el));
+  });
 } else {
-  fadeIns.forEach(el=>observer.observe(el));
+  fadeIns.forEach(el => observer.observe(el));
 }
