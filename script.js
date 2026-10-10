@@ -9,10 +9,17 @@ const observer = new IntersectionObserver((entries)=>{
   });
 },{ threshold: 0.1 });
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    fadeIns.forEach(el => observer.observe(el));
-  });
+function observeAll(){
+  fadeIns.forEach(el=>observer.observe(el));
+}
+
+if ('IntersectionObserver' in window) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeAll);
+  } else {
+    observeAll();
+  }
 } else {
-  fadeIns.forEach(el => observer.observe(el));
+  // Fallback: instantly show all
+  fadeIns.forEach(el=>el.classList.add('applied'));
 }
