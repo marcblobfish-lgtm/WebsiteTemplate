@@ -1,10 +1,7 @@
-// Simple fade‑in on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('.fade-in');
-  elements.forEach((el, index) => {
-    // Stagger the animation
-    setTimeout(() => {
-      el.classList.add('applied');
-    }, index * 200); // 200ms per element
-  });
+// Immediately apply fade‑in classes after page load
+const fadeIns = document.querySelectorAll('.fade-in');
+fadeIns.forEach((el, index) => {
+  setTimeout(() => {
+    el.classList.add('applied');
+  }, index * 200); // stagger animation
 });
